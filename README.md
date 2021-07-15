@@ -39,4 +39,4 @@
 先source verdi, 再source Incisive(irun, ncverilog)  
 $ irun testfixture.v DT.v init.v fp.v bp.v +define+TB2 +define+FSDB +access+r
 
-![image](https://user-images.githubusercontent.com/48709873/125732355-c413c7be-bbda-4935-8b6d-cd74ce5c56d6.png)
+![image](https://user-images.githubusercontent.com/48709873/125733218-7d8ee428-f543-423a-8326-0181ab4c7332.png)
