@@ -1,5 +1,5 @@
 ## 設計概念
-1. initialize:
+1. initialize: (init.v)
     
     0. initial: sti_addr=0 (addr send to ROM), buffer_counter=0, res_addr=0 (addr send to RAM)。 state: initialize
     1. (sti_rd=1)將16 bits 的資料由ROM讀進來。state: indicate_ROM
@@ -9,7 +9,7 @@
     5. initialize done! state: initial_done
 
 
-2. forward pass: 
+2. forward pass: (fp.v)
     
     0. initial_done? Yes:設RAM_addr=129 (題目說明圖形四周都是0，而0不需做計算，因此從第1排的第一個開始(註: 開頭是第0排第0個)，也就是128*1+1)；No: Step 0。state: init
     1. (res_rd=1) 傳送RAM_addr給RAM(res_addr=RAM_addr)。state: send_target_addr
@@ -22,7 +22,7 @@
     8. (res_rd=0, res_wr=0) 檢查RAM_addr=128*126+126?，若是，跳到第9步；否，(RAM_addr-127)%128=0?是，RAM_addr+3, go to step 1；否，RAM_addr+1, go to step 1。 state: check_RAM_addr
     9. forward_pass_done，forward pass完成, state: done
 
-3. backward pass:
+3. backward pass: (bp.v)
     
     0. forward_pass_done? yes: RAM_addr=128*126+126，step 1 ； no: step 0。state: init
     1. (res_rd=1) 傳送res_addr給RAM，target=0。state:send_target_addr
