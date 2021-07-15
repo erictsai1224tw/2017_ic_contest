@@ -34,3 +34,9 @@
     7. (res_rd=0, res_wr=1) 找出E, SW, S, SE(這週期收到的值)，中最小者，將這個值+1後與target比較，把這次比較中較小的值寫回RAM，(res_addr=RAM_addr)。state: load_SE_write_back
     8. (res_rd=0, res_wr=0)檢查RAM_addr=129? 是，跳到第9步；否，(RAM_addr-1)%128=0?是，RAM_addr-3, go to step 1；否，RAM_addr-1, go to step 1。 state: check_RAM_addr
     9. backward_done，trigger DT的DONE，全部完成。state: DONE
+
+## 指令
+先source verdi, 再source Incisive(irun, ncverilog)  
+$ irun testfixture.v DT.v init.v fp.v bp.v +define+TB2 +define+FSDB +access+r
+
+![image](https://user-images.githubusercontent.com/48709873/125732355-c413c7be-bbda-4935-8b6d-cd74ce5c56d6.png)
