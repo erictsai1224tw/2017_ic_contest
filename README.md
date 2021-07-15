@@ -37,8 +37,14 @@
 
 ## 指令
 先source verdi, 再source Incisive(irun, ncverilog)  
-RTL Simulation(dump FSDB waveform file): $ irun testfixture.v DT.v init.v fp.v bp.v +define+TB1 +define+FSDB +access+r  
-Gate Level Simulation: $ irun testfixture.v DT.v init.v fp.v bp.v -v tsmc13_neg.v +define+SDF +define+TB1  
+RTL Simulation(dump FSDB waveform file):   
+```
+$ irun testfixture.v DT.v init.v fp.v bp.v +define+TB1 +define+FSDB +access+r
+```
+Gate Level Simulation:  
+```
+$ irun testfixture.v DT.v init.v fp.v bp.v -v tsmc13_neg.v +define+SDF +define+TB1
+```
 
 已通過 TB1, TB2 的 RTL Simulation 與 Gate Level Simulation
 
