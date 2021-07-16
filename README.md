@@ -39,13 +39,20 @@
 先source verdi, 再source Incisive(irun, ncverilog)  
 RTL Simulation(dump FSDB waveform file):   
 ```
-$ irun testfixture.v DT.v init.v fp.v bp.v +define+TB1 +define+FSDB +access+r
+irun testfixture.v DT.v init.v fp.v bp.v +define+TB1 +define+FSDB +access+r
 ```
 Gate Level Simulation:  
 ```
-$ irun testfixture.v DT_syn.v -v tsmc13_neg.v +define+SDF +define+TB1
+irun testfixture.v DT_syn.v -v tsmc13_neg.v +define+SDF +define+TB1
 ```
 
 已通過 TB1, TB2 的 RTL Simulation 
 
 ![image](https://user-images.githubusercontent.com/48709873/125733218-7d8ee428-f543-423a-8326-0181ab4c7332.png)
+
+```
+write –hierarchy –format ddc –output DT.ddc
+write –hierarchy –format verilog -output DT_syn.v
+write_sdf -version 2.1 -context verilog DT_syn.sdf
+write_sdc DT.sdc
+```
