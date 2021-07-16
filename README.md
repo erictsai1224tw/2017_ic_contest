@@ -50,6 +50,7 @@ irun testfixture.v DT_syn.v -v tsmc13_neg.v +define+SDF +define+TB1
 
 ![image](https://user-images.githubusercontent.com/48709873/125733218-7d8ee428-f543-423a-8326-0181ab4c7332.png)
 
+## design compiler scripts
 ```
 remove_design -designs
 read_file -format verilog {/home/M10/erictsai/B_ICC2017_preliminary_grad_cell-based/DT.v}
