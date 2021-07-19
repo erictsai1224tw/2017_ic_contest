@@ -21,7 +21,6 @@
     7. (res_rd=0, res_wr=1) 找出NW, N, NE, W(這週期收到的值)中最小值，將這個值+1後寫回RAM, res_addr=RAM_addr。state: load_W_find_min
     8. (res_rd=0, res_wr=0) 檢查RAM_addr=128*126+126?，若是，跳到第9步；否，(RAM_addr-127)%128=0?是，RAM_addr+3, go to step 1；否，RAM_addr+1, go to step 1。 state: check_RAM_addr
     9. forward_pass_done，forward pass完成, state: done  
-    註: 為了減少晶片面積的浪費，在loading每一個pixel時，就會與上一個值比較，若新進來的值較小則保留，這樣就可以減少所需要的buffer數，最後將值寫回RAM時也不必再耗費3個buffer來比較數值，在Backward pass時亦同
 
 3. backward pass: (bp.v)
     
@@ -35,6 +34,8 @@
     7. (res_rd=0, res_wr=1) 找出E, SW, S, SE(這週期收到的值)，中最小者，將這個值+1後與target比較，把這次比較中較小的值寫回RAM，(res_addr=RAM_addr)。state: load_SE_write_back
     8. (res_rd=0, res_wr=0)檢查RAM_addr=129? 是，跳到第9步；否，(RAM_addr-1)%128=0?是，RAM_addr-3, go to step 1；否，RAM_addr-1, go to step 1。 state: check_RAM_addr
     9. backward_done，trigger DT的DONE，全部完成。state: DONE
+
+註: 為了減少晶片面積的浪費，在forward pass/backward pass loading每一個pixel時，就會與上一個值比較，若新進來的值較小則保留，這樣就可以減少所需要的buffer數，最後將值寫回RAM時也不必再耗費3個buffer來比較數值
 
 ## Gate level Simulation 心得
 在Gate level Simulation時，使用design compiler產出gate level netlist的.v檔後，用ncverilog驗證時整個結果都爛掉了，對了好幾天的waveform，最後將部分信號置於always@( * )之下，跟輸出地址有關的放在always@(posedge clk)之下，才順利完成gate level simulation
