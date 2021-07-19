@@ -44,28 +44,10 @@ irun testfixture.v DT.v init.v fp.v bp.v +define+TB1 +define+FSDB +access+r
 Gate Level Simulation:  
 ```
 irun testfixture.v DT_syn.v -v tsmc13_neg.v +define+SDF +define+TB1 +define+FSDB +access+r
-```
+```  
 
-已通過 TB1, TB2 的 RTL Simulation、Gate Level Simulation
+已通過 TB1, TB2 的 RTL Simulation、Gate Level Simulation  
+Time= 1842610 NS，Area= 11038
 ![image](https://user-images.githubusercontent.com/48709873/126175340-bee04f09-5b30-4875-b8a4-46d96239e5ed.png)
 ![image](https://user-images.githubusercontent.com/48709873/126175496-f2664116-6694-4e5b-94fb-f1728df990c1.png)
 
-
-## design compiler scripts
-```
-remove_design -designs
-read_file -format verilog {/home/M10/erictsai/B_ICC2017_preliminary_grad_cell-based/DT.v}
-set_operating_conditions -min_library fast -min fast  -max_library slow -max slow
-set_wire_load_model -name tsmc13_wl10 -library slow
-create_clock -name "clk" -period 20 -waveform { 0 10  }  { clk  }
-set_dont_touch_network  [ find clock clk ]
-set_fix_hold  [ find clock clk]
-set_max_area 0
-compile -exact_map
-write -hierarchy -format ddc -output DT.ddc
-write -hierarchy -format verilog -output DT_syn.v
-write_sdf -version 2.1 -context verilog DT_syn.sdf
-write_sdc DT.sdc
-uplevel #0 { report_timing -path full -delay max -nworst 1 -max_paths 1 -significant_digits 2 -sort_by group }
-uplevel #0 { report_area -nosplit }
-```
