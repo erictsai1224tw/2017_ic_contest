@@ -188,7 +188,6 @@ begin
             res_wr_state=0;
             initialize_done_state=1;
         end
-
     endcase
 end
 
@@ -328,8 +327,6 @@ begin
                 res_addr_state<=res_addr_state+1;
         end
     end
-    done:begin
-    end
     endcase
 end
 
@@ -358,7 +355,6 @@ begin
     end
     send_NE_load_N:begin
         res_rd_state=1;
-        
     end
     send_W_load_NE:begin
         res_rd_state=1;
