@@ -47,8 +47,10 @@ irun testfixture.v DT_syn.v -v tsmc13_neg.v +define+SDF +define+TB1 +define+FSDB
 ```
 
 已通過 TB1, TB2 的 RTL Simulation、Gate Level Simulation
+![image](https://user-images.githubusercontent.com/48709873/126175340-bee04f09-5b30-4875-b8a4-46d96239e5ed.png)
+![image](https://user-images.githubusercontent.com/48709873/126175439-c565788d-a5af-4bce-8b4e-bda9c673cb1b.png)
+![image](https://user-images.githubusercontent.com/48709873/126175496-f2664116-6694-4e5b-94fb-f1728df990c1.png)
 
-![image](https://user-images.githubusercontent.com/48709873/125733218-7d8ee428-f543-423a-8326-0181ab4c7332.png)
 
 ## design compiler scripts
 ```
