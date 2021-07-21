@@ -63,6 +63,3 @@ Information: Percent of Arnoldi-based delays =  6.18%
   data arrival time                                                 -4.70
   --------------------------------------------------------------------------
   slack (MET)                                                        5.04
-
-
-1
