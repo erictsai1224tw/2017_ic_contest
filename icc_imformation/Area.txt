@@ -27,4 +27,3 @@ Net Interconnect area:      undefined  (No wire load specified)
 
 Total cell area:                 11112.877772
 Total area:                 undefined
-1
