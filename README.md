@@ -38,7 +38,7 @@
 註: 為了減少晶片面積的浪費，在forward pass/backward pass loading每一個pixel時，就會與上一個值比較，若新進來的值較小則保留，這樣就可以減少所需要的buffer數，最後將值寫回RAM時也不必再耗費3個buffer來比較數值
 
 ## Gate level Simulation 心得
-在Gate level Simulation時，使用design compiler產出gate level netlist的.v檔後，用ncverilog驗證時整個結果都爛掉了，對了好幾天的waveform，最後將部分信號置於always@( * )之下，跟輸出地址有關的放在always@(posedge clk)之下，才順利完成gate level simulation
+在Gate level Simulation時，使用design compiler產出gate level netlist的.v檔後，用ncverilog驗證時整個結果都有問題（輸出位置沒對上、該作動的信號沒變化等），對了好幾天的waveform，最後將部分信號置於always@( * )之下，跟輸出地址有關的放在always@(posedge clk)之下，才順利完成gate level simulation
 
 ## 指令
 先source verdi, 再source Incisive(irun, ncverilog)  
