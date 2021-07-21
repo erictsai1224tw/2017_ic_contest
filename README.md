@@ -56,3 +56,5 @@ Time (TB1/TB2) = 1842610 / 1608610 NS，Area= 11038 (競賽要求A級 Time < 192
 ![image](https://user-images.githubusercontent.com/48709873/126175340-bee04f09-5b30-4875-b8a4-46d96239e5ed.png)
 ![image](https://user-images.githubusercontent.com/48709873/126175496-f2664116-6694-4e5b-94fb-f1728df990c1.png)
 
+## 使用 IC compiler
+![image](https://user-images.githubusercontent.com/48709873/126518655-5f6b9624-2617-4a7d-ad78-eb039e15fc73.png)
