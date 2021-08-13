@@ -58,3 +58,10 @@ Time (TB1/TB2) = 1842610 / 1608610 NS，Area= 11038 (競賽要求A級 Time < 192
 
 ## 使用 IC compiler
 ![image](https://user-images.githubusercontent.com/48709873/126518655-5f6b9624-2617-4a7d-ad78-eb039e15fc73.png)
+
+## system C
+DT.h 與 DT.cpp 為主要的設計檔  
+執行:
+```
+make && ./DT
+```
