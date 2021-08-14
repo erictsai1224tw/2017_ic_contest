@@ -1,27 +1,6 @@
 ## 設計概念
 ![](https://i.imgur.com/vpALtZO.png)
 
-```graphviz
-digraph FSM_2017_ic_design_top {
-	rankdir=LR;
-	size="10,8"
-	node [shape = point]; begin;
-	node [shape = circle]; Initial "Forward\nPass" "Backward\nPass" Finish;
-	begin -> Initial [label="reset"];
-	Initial -> Initial [label = "not done | reset"];
-    Initial -> "Forward\nPass" [label = "done"];
-    "Forward\nPass"->"Forward\nPass"[label = "not done"];
-    "Forward\nPass"->"Backward\nPass"[label = "done"];
-    "Backward\nPass"-> Initial [rankdir=RL, label = "reset", constraint=false];
-    "Forward\nPass"-> Initial [rankdir=RL, label = "\n\nreset", constraint=false];
-    "Backward\nPass"->"Backward\nPass"[label = "not done"];
-    "Backward\nPass"->Finish[label = "done"];
-    Finish-> Initial [rankdir=RL, label = "reset", constraint=false];
-    Finish->Finish[];
-
-}
-```
-
 1. initialize: (init.v)
     
     0. initial: sti_addr=0 (addr send to ROM), buffer_counter=0, res_addr=0 (addr send to RAM)。 state: initialize
