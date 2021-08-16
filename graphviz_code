@@ -18,3 +18,42 @@ digraph FSM_2017_ic_design_top {
 
 }
 ```
+digraph FSM_2017_ic_design_initial {
+	rankdir=LR;
+	size="10,8"
+	node [shape = point]; begin;
+	node [shape = circle]; //Initial "Forward\nPass" "Backward\nPass" Finish;
+	a [label="Initial"];
+	b [label = "Send Addr\nto ROM"];
+	c [label= "Read Data\nfrom ROM"];
+	d [label="Send Data\nto RAM"];
+	h [label="Send Data\nto RAM_0"];
+	e [label="Check\nFinish"];
+	f [label="Initial\nDone"];
+	begin -> a [label="reset==0"];
+	a->a[label="reset==0"];
+	a->b[label="reset==1"];
+	b->c;
+	c->h;
+	h->d;
+	d->d[label="buffer_addr!=15"];
+	d->e[label="buffer_addr==15"];
+	e->f[label="addr_to_ROM==1023"];
+	e->b[label="addr_to_ROM!=1023", constraint=false];
+
+}
+
+
+digraph FSM_2017_ic_design_initial_buffer_addr {
+	rankdir=LR;
+	size="10,8"
+	//node [shape = point]; begin;
+	node [shape = circle]; //Initial "Forward\nPass" "Backward\nPass" Finish;
+	a [label="buffer_addr=0"];
+	b [label="buffer_addr++"];
+	a->b[label="State==Send Data to RAM"];
+	b->b[label="buffer_addr!=15"];
+	b->a[label="\n\n\nbuffer_addr==15"];
+
+}
+
