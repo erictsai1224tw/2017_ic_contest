@@ -120,3 +120,52 @@ digraph FSM_2017_ic_design_fp_addr_RAM {
 	c->d[label="addr==128*126+126"];
 
 }
+
+digraph FSM_2017_ic_design_bp {
+	rankdir=LR;
+	size="10,8"
+	node [shape = point]; begin;
+	node [shape = circle]; //Initial "Forward\nPass" "Backward\nPass" Finish;
+	a [label="Initial"];
+	b [label = "Send Addr\nto RAM"];
+	c [label= "Check Data \nfrom RAM=1"];
+	d [label="Send E addr\nto RAM"];
+    e [label="Send SW addr\nto RAM/\nload E"];
+    f [label="Send S addr\nto RAM/\nload SW"];
+    g [label="Send SE addr\nto RAM/\nload S"];
+    h [label="load SE/\nWrite to RAM"];
+    i [label="check RAM addr"];
+    j [label="BP done"];
+    {rank=same;e;f;};
+	begin -> a;
+	a->a[label=" reset==0"];
+	a->b[label=" reset==1"];
+	b->c;
+	c->i[label="Data=0", constraint=false];
+	c->d[label="Data=1"];
+	d->e;
+	e->f[rankdir="TB"];
+	j->i[label="Addr<129", dir=back];
+	i->h->g->f[dir=back];
+	i->b:sw[label="Addr>=129", constraint=false];
+
+}
+
+digraph FSM_2017_ic_design_bp_addr_RAM {
+	rankdir=LR;
+	size="10,8"
+	node [shape = point]; begin;
+	node [shape = circle]; //Initial "Forward\nPass" "Backward\nPass" Finish;
+	a [label="state=Initial/\naddr=128*126+126"];
+	b [label = "state!=check RAM addr\n"];
+	c [label= "state=check RAM addr\n"];
+	d [label="state=Done/\nAddr=128"];
+
+	begin -> a ->b;
+	b->c[label="next_state=check RAM addr"];
+	b->b[label="next_state!=check RAM addr"];
+	c:nw->b[label="(addr-1)%128==0/\naddr-3"];
+	c:sw->b[label="(addr-1)%128!=0/\naddr-1"];
+	c->d[label="addr<=128"];
+
+}
