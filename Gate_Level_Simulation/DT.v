@@ -132,13 +132,8 @@ output reg initialize_done;
 
 parameter init=0, indicate_ROM=1, load_from_ROM=2, send_to_RAM_0=3, send_to_RAM=4, checkif_done=5, done=6;
 reg [2:0]state, nstate;
-//reg [9:0]sti_addr_state;
 reg [3:0]buf_state, buf_nstate;
 reg [0:15]buff;
-//reg [13:0]res_addr_state;
-
-// assign sti_addr=sti_addr_state;
-// assign res_addr=res_addr_state;
 
 always @(*)
 begin
@@ -435,7 +430,7 @@ endmodule
 
 module backward_pass(clk, rstn, fp_done, res_rd, res_wr, res_addr, res_do, res_di, bp_done);
 input clk, rstn, fp_done;
-input [7:0]	res_di;
+input [7:0] res_di;
 output reg res_wr, res_rd;
 output reg [13:0] res_addr;
 output reg [7:0] res_do;
