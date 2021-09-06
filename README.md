@@ -53,7 +53,11 @@ vcs -debug_access+pp +define+TB1 testfixture.v DT_rtl.v && ./simv
 ```
 Gate Level Simulation:  
 ```
+// Cadence ncverilog:
 irun testfixture.v DT_syn.v -v tsmc13_neg.v +define+SDF +define+TB1 +define+FSDB +access+r
+
+// Synopsys VCS:
+vcs -debug_access+pp +define+TB1 +define+SDF tsmc13_neg.v testfixture.v DT_syn.v && ./simv
 ```  
 
 已通過 TB1, TB2 的 RTL Simulation、Gate Level Simulation  
