@@ -49,7 +49,7 @@ RTL Simulation(dump FSDB waveform file)
 irun testfixture.v DT.v init.v fp.v bp.v +define+TB1 +define+FSDB +access+r
 
 // Synopsys VCS:
-vcs -debug_access+pp +define+TB1 testfixture.v DT_rtl.v && ./simv
+vcs -debug_access+pp +define+TB2 +define+FSDB testfixture.v DT.v && ./simv
 ```
 Gate Level Simulation:  
 ```
