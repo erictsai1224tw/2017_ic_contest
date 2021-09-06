@@ -43,7 +43,6 @@
 在Gate level Simulation時，使用design compiler產出gate level netlist的.v檔後，用ncverilog驗證時整個結果都有問題（輸出位置沒對上、該作動的信號沒變化等），持續比對waveform，最後將部分信號置於always@( * )之下，跟輸出地址有關的放在always@(posedge clk)之下，才順利完成gate level simulation
 
 ## 指令
-先source verdi, 再source Incisive(irun, ncverilog)  
 RTL Simulation(dump FSDB waveform file)
 ```
 // Cadence ncverilog:
