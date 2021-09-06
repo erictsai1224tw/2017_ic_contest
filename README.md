@@ -44,9 +44,13 @@
 
 ## 指令
 先source verdi, 再source Incisive(irun, ncverilog)  
-RTL Simulation(dump FSDB waveform file):   
+RTL Simulation(dump FSDB waveform file)
 ```
+// Cadence ncverilog:
 irun testfixture.v DT.v init.v fp.v bp.v +define+TB1 +define+FSDB +access+r
+
+// Synopsys VCS:
+vcs -debug_access+pp +define+TB1 testfixture.v DT_rtl.v && ./simv
 ```
 Gate Level Simulation:  
 ```
