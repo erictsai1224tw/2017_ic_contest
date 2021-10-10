@@ -27,19 +27,19 @@ digraph FSM_2017_ic_design_initial {
 	b [label = "Send Addr\nto ROM"];
 	c [label= "Read Data\nfrom ROM"];
 	d [label="Send Data\nto RAM"];
-	h [label="Send Data\nto RAM_0"];
+// 	h [label="Send Data\nto RAM_0"];
 	e [label="Check\nFinish"];
 	f [label="Initial\nDone"];
+	{rank=same;b;d;};
 	begin -> a [label="reset==0"];
 	a->a[label="reset==0"];
 	a->b[label="reset==1"];
 	b->c;
-	c->h;
-	h->d;
+	c->d;
 	d->d[label="buffer_addr!=15"];
-	d->e[label="buffer_addr==15"];
-	e->f[label="addr_to_ROM==1023"];
-	e->b[label="addr_to_ROM!=1023", constraint=false];
+	e->d[label="buffer_addr==15",dir=back];
+	f->e[label="addr_to_ROM==1023", dir=back];
+	e->b[label="addr_to_ROM!=1023"];
 
 }
 
